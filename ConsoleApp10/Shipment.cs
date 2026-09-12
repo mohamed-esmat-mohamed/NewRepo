@@ -60,6 +60,27 @@ namespace SmartDeliveryManagementSystem
         {
             get { return DeliveryFee + ((decimal)Weight * 5); }
         }
+        #region  Q3 Constructor 1: receives only trackingCode
+
+        public Shipment(string trackingCode)
+        {
+            this.trackingCode = !string.IsNullOrWhiteSpace(trackingCode) ? trackingCode : "UNKNOWN";
+            description = "Unknown";
+            weight = 1;
+            deliveryFee = 50;
+            Destination = new DeliveryAddress("Unknown", "Unknown", 0);
+        }
+
+
+        public Shipment(string trackingCode, string description, double weight, decimal deliveryFee, DeliveryAddress destination)
+        {
+            this.trackingCode = !string.IsNullOrWhiteSpace(trackingCode) ? trackingCode : "UNKNOWN";
+            this.description = !string.IsNullOrWhiteSpace(description) ? description : "Unknown";
+            this.weight = weight > 0 ? weight : 1;
+            this.deliveryFee = deliveryFee > 0 ? deliveryFee : 50;
+            Destination = destination;
+        }
+        #endregion
 
 
     }
