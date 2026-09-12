@@ -11,10 +11,10 @@ namespace SmartDeliveryManagementSystem
         private double weight;
         private decimal deliveryFee;
 
-        
+
         public DeliveryAddress Destination { get; set; }
 
-   
+
         public string TrackingCode
         {
             get { return trackingCode; }
@@ -28,11 +28,11 @@ namespace SmartDeliveryManagementSystem
             {
                 if (!string.IsNullOrWhiteSpace(value))
                     description = value;
-         
+
             }
         }
 
- 
+
         public double Weight
         {
             get { return weight; }
@@ -55,7 +55,7 @@ namespace SmartDeliveryManagementSystem
             }
         }
 
-       
+
         public decimal EstimatedCost
         {
             get { return DeliveryFee + ((decimal)Weight * 5); }
@@ -82,6 +82,25 @@ namespace SmartDeliveryManagementSystem
         }
         #endregion
 
+        #region 
+        //Q4
+        public void UpdateDeliveryFee(decimal newFee)
+        {
+            if (newFee > 0)
+                deliveryFee = newFee;
+        }
 
+
+        public void PrintShipment()
+        {
+            Console.WriteLine("---Tracking Code:");
+            Console.WriteLine($"{TrackingCode} Description:");
+            Console.WriteLine($"{Description} Weight: {Weight} KG");
+            Console.WriteLine($"Delivery Fee: {DeliveryFee} EGP");
+            Console.WriteLine($"Destination: {Destination.GetFullAddress()}");
+            Console.WriteLine($"Estimated Cost: {EstimatedCost} EGP");
+        }
+
+        #endregion
     }
 }
